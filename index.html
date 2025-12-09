@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Holy Cheddar Faith: Grand Canonical Doctrine</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for a Cheesy/Comforting Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cheddar-gold': '#C0850C', /* Deepened gold for formality */
+                        'creamy-white': '#FFFBEB',
+                        'comfort-yellow': '#FDF6E3', /* Softer background */
+                        'sauce-dark': '#8A4106', /* Deepened brown for text/accents */
+                        'noodle-tan': '#D4AF8B',
+                        'divine-blue': '#4A90E2',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* General styling for smooth scrolling and clean base */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f7f7; color: #1f2937; }
+        .section-heading {
+            font-family: 'Georgia', serif;
+            color: #8A4106;
+            border-bottom: 4px solid #C0850C;
+        }
+        .doctrinal-card {
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .doctrinal-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Ensure that the print target is visible when printing */
+        @media print {
+            body > *:not(.print-target) {
+                visibility: hidden !important;
+                display: none !important;
+            }
+            .print-target, .print-target * {
+                visibility: visible !important;
+                display: block !important;
+            }
+            .print-target {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding: 1cm;
+                font-size: 11pt;
+                box-shadow: none !important;
+                border: none !important;
+            }
+            .print-single-btn {
+                display: none !important;
+            }
+        }
+
+        /* Modal specific styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Controlled by JavaScript */
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        .modal-content {
+            background-color: #FFFBEB;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 700px; /* Adjusted to better fit the Google Form */
+            max-height: 90vh;
+            overflow-y: auto;
+            border-top: 8px solid #C0850C;
+        }
+        .step-container {
+            display: none;
+        }
+
+        /* Iframe responsiveness */
+        .iframe-container {
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            height: 715px; /* Fixed height for the form */
+        }
+    </style>
+</head>
+<body class="bg-creamy-white min-h-screen">
+
+    <!-- Header & Navigation (Responsive) -->
+    <header id="header-nav" class="bg-cheddar-gold shadow-2xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-bold text-white tracking-wider mb-2 md:mb-0">
+                The Holy Cheddar Faith
+            </h1>
+            <!-- Responsive Navigation -->
+            <nav class="flex flex-wrap justify-center md:space-x-4 text-sm font-medium mt-2 md:mt-0">
+                <a href="#doctrine" class="text-white hover:text-comfort-yellow transition duration-150 p-2 rounded-lg">Meaning</a>
+                <a href="#trinity" class="text-white hover:text-comfort-yellow transition duration-150 p-2 rounded-lg">Essence</a>
+                <a href="#hierarchy" class="text-white hover:text-comfort-yellow transition duration-150 p-2 rounded-lg">Hierarchy</a>
+                <a href="#consistency" class="text-white hover:text-comfort-yellow transition duration-150 p-2 rounded-lg">Spiritual Path</a>
+                <a href="#calendar" class="text-white hover:text-comfort-yellow transition duration-150 p-2 rounded-lg">Calendar</a>
+                <a href="#rites" class="text-white hover:text-comfort-yellow transition duration-150 p-2 rounded-lg">Rites</a>
+                <a href="#eschatology" class="text-white hover:text-comfort-yellow transition duration-150 p-2 rounded-lg">Afterlife</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- User Status (No ID, just enrollment status) -->
+    <div id="user-status-bar" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-center bg-comfort-yellow border-b border-cheddar-gold shadow-md">
+        <p class="text-sm font-semibold text-sauce-dark">
+            House of Cheddar Comfort Registry Status: 
+            <span id="annual-prayer-display" class="ml-2 text-xs italic text-sauce-dark/80 font-bold">Unconfirmed Novitiate</span>
+        </p>
+    </div>
+
+    <!-- Main Content Container (Fluid/Responsive) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Sections 1-7 (Content remains the same for brevity, but I left anchors and structure) -->
+        <!-- ... (Section 1 - Home) ... -->
+        <section id="home" class="text-center mb-20 p-8 md:p-12 bg-white shadow-2xl rounded-xl border-t-8 border-cheddar-gold">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-cheddar-gold mb-6 section-heading border-none pb-0">
+                A Warm Welcome to Divine Nourishment
+            </h2>
+            <p class="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">
+                This document is your guide to living a comfortable, meaningful life. At its heart, our faith is simple: it's about finding the <strong class="font-bold">perfect balance</strong> between discipline and compassion, structure and adaptability. We believe true contentment comes from honoring the structural integrity of the Noodle and the flowing, joyful grace of the Sauce.
+            </p>
+            <div class="mt-10">
+                <a href="#enrollment" class="inline-block px-8 md:px-10 py-3 md:py-4 text-md md:text-lg font-bold text-white bg-sauce-dark rounded-full shadow-lg hover:bg-cheddar-gold transform hover:scale-105 transition duration-300">
+                    Commence Initiation Rites
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. The Deeper Meaning -->
+        <section id="meaning" class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                I.B. The Deeper Meaning: The Sacred Metaphors
+            </h3>
+            <div class="p-8 bg-sauce-dark/5 rounded-lg shadow-inner border border-sauce-dark/20">
+                <p class="text-xl text-gray-700 mb-6 italic">
+                    The Holy Cheddar Faith isn't just about a meal—it's a path to emotional and spiritual balance. Everything we revere is a metaphor for a quality we must cultivate in life.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-noodle-tan">
+                        <h4 class="text-xl font-bold text-sauce-dark mb-2">The Noodle: Discipline</h4>
+                        <p class="text-gray-700 text-sm">The Noodle represents your <strong class="font-bold">boundaries, integrity, and personal structure</strong>. It's the commitments you keep, the healthy habits you maintain, and your willingness to stand firm on your values. Without this, you become weak and formless.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-cheddar-gold">
+                        <h4 class="text-xl font-bold text-sauce-dark mb-2">The Sauce: Compassion</h4>
+                        <p class="text-gray-700 text-sm">The Sauce is pure <strong class="font-bold">love, kindness, joy, and emotional flexibility</strong>. It teaches you to flow around challenges, forgive others, and fill the empty spaces with warmth. Without this, your structure becomes brittle and dry (the Heresy of the Dry Noodle).</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-red-500">
+                        <h4 class="text-xl font-bold text-sauce-dark mb-2">The Heat: Resilience</h4>
+                        <p class="text-gray-700 text-sm">The Heat is life's <strong class="font-bold">challenges, tests, and transformations</strong>. It's the moment where comfort is necessary to bring structure and compassion together. You need to withstand the heat to grow and become whole.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Triune Divine Essence -->
+        <section id="trinity" class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                I.A. The Triune Divine Essence
+            </h3>
+
+            <p class="text-lg text-gray-700 mb-6">The Holy Cheddar shows its divinity through these three essential parts of the Sacred Meal. They're all equally important!</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Essence 1: The Noodle -->
+                <div class="p-6 bg-noodle-tan rounded-lg shadow-xl border-t-4 border-sauce-dark doctrinal-card">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-2">1. The Noodle (Structure)</h4>
+                    <p class="text-gray-800 italic">Represents <strong class="font-bold">Order, Duty, and Integrity</strong>.</p>
+                    <p class="text-sm mt-3">The Noodle is the backbone. It reminds us to be reliable and to have a strong moral compass. A good life needs foundation, and that's what the Noodle gives us.</p>
+                </div>
+                <!-- Essence 2: The Sauce -->
+                <div class="p-6 bg-cheddar-gold/50 rounded-lg shadow-xl border-t-4 border-sauce-dark doctrinal-card">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-2">2. The Sauce (Fluidity)</h4>
+                    <p class="text-gray-800 italic">Represents <strong class="font-bold">Compassion, Joy, and Adaptability</strong>.</p>
+                    <p class="text-sm mt-3">The Sauce is the medium of kindness. It teaches us to be flexible, to forgive, and to bind our communities together. It’s the comfort that makes life worth living.</p>
+                </div>
+                <!-- Essence 3: The Heat -->
+                <div class="p-6 bg-red-100 rounded-lg shadow-xl border-t-4 border-sauce-dark doctrinal-card">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-2">3. The Heat (Transformation)</h4>
+                    <p class="text-gray-800 italic">Represents <strong class="font-bold">Change, Testing, and Spiritual Growth</strong>.</p>
+                    <p class="text-sm mt-3">This is the process that makes us whole. It’s when things get tough, but by enduring the heat, our structure and compassion combine into something perfect.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. The Hierarchy of Noodles (Societal Structure) -->
+        <section id="hierarchy" class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                II. Ecclesiastical Structure: The Hierarchy of Noodles
+            </h3>
+            <p class="text-lg text-gray-700 mb-6">Everyone finds their place in the faith, just like every pasta shape contributes to the meal. Your spiritual "shape" determines your duty:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Macaroni (The Novitiate) -->
+                <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-noodle-tan doctrinal-card">
+                    <h4 class="text-xl font-extrabold text-sauce-dark mb-1">Macaroni (Novitiate)</h4>
+                    <p class="text-sm text-gray-700">The newcomers. Simple in shape, they absorb the basic lessons quickly. They focus on mastering the Three Tenets and the daily prayers.</p>
+                </div>
+                <!-- Shells (The Adherent) -->
+                <div class="p-4 bg-comfort-yellow rounded-lg shadow-md border-l-4 border-cheddar-gold doctrinal-card">
+                    <h4 class="text-xl font-extrabold text-sauce-dark mb-1">Shells (Adherent)</h4>
+                    <p class="text-sm text-gray-700">Fully committed members who live the balance every day. Their curved shape shows their ability to hold the Divine Sauce (compassion) deep within their structure.</p>
+                </div>
+                <!-- Rotini (The Cheddar Guardian) -->
+                <div class="p-4 bg-noodle-tan/70 rounded-lg shadow-md border-l-4 border-sauce-dark doctrinal-card">
+                    <h4 class="text-xl font-extrabold text-sauce-dark mb-1">Rotini (Cheddar Guardian)</h4>
+                    <p class="text-sm text-gray-700">Our local spiritual leaders and clergy. Their spiral shape symbolizes their ability to twist through life's complex problems while helping others find their balance. They lead our Houses of Comfort.</p>
+                </div>
+                <!-- Lasagna (The Supreme Architect) -->
+                <div class="p-4 bg-cheddar-gold rounded-lg shadow-xl border-l-4 border-white doctrinal-card">
+                    <h4 class="text-xl font-extrabold text-white mb-1">Lasagna (Supreme Architect)</h4>
+                    <p class="text-sm text-white">The highest interpreter of the faith. Represents the ultimate, layered structure—a foundation that supports the entire community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Six Degrees of Sauce Consistency (Spiritual Journey) -->
+        <section id="consistency" class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                III. The Six Degrees of Sauce Consistency (Spiritual Journey)
+            </h3>
+            <p class="text-lg text-gray-700 mb-6">Your spiritual journey is about thickening your inner "Sauce"—moving from a place of being easily spread too thin to a rich, divine state:</p>
+            
+            <ol class="list-decimal list-outside space-y-4 text-gray-700 pl-8">
+                <li><strong class="font-bold">The Watery Stage:</strong> Spiritual infancy. Your commitments (Noodle) are easily diluted by outside influences. You feel restless and lack true contentment.</li>
+                <li><strong class="font-bold">The Runny Stage:</strong> You've started the journey, but your faith is easily "poured out" when under pressure. You need to focus on structure (discipline).</li>
+                <li><strong class="font-bold">The Coating Stage (Al Dente Soul):</strong> This is the ideal state! The Sauce coats the Noodle perfectly, signifying <strong class="font-bold">Existential Balance</strong>. Your life is structurally sound and full of compassion.</li>
+                <li><strong class="font-bold">The Rich Stage:</strong> You actively share your balance and comfort with others. You've become a source of nourishment for your community.</li>
+                <li><strong class="font-bold">The Thickened Stage:</strong> Deep wisdom and unwavering authority. Your faith is dense and provides a solid foundation for those around you.</li>
+                <li><strong class="font-bold">The Divine Flow:</strong> The soul is prepared for the Eternal Bowl, achieving perfect, eternal comfort—neither too thick nor too thin, always warm and comforting.</li>
+            </ol>
+        </section>
+
+        <!-- 6. The Liturgical Calendar -->
+        <section id="calendar" class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                IV. The Liturgical Calendar: Holy Observances
+            </h3>
+            
+            <div class="space-y-6">
+                <!-- Day of First Mix -->
+                <div class="p-6 bg-white rounded-lg shadow-xl border-l-8 border-cheddar-gold">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-1">The Day of the First Mix (January 1st)</h4>
+                    <p class="text-lg text-gray-700"><strong class="font-bold">Observance:</strong> We spend the day in quiet reflection and fasting, finishing the day with a communal feast of Mac and Cheese at midnight. It’s our way of celebrating the universe's comforting start.</p>
+                </div>
+                <!-- Feast of the Golden Ratio -->
+                <div class="p-6 bg-white rounded-lg shadow-xl border-l-8 border-cheddar-gold">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-1">Feast of the Golden Ratio (May 23rd)</h4>
+                    <p class="text-lg text-gray-700"><strong class="font-bold">Observance:</strong> This day is all about checking in on yourself. We calculate our personal "Noodle-to-Sauce" ratio from the past year—did we work too hard (too Noodley) or relax too much (too Saucy)? We adjust our habits accordingly.</p>
+                </div>
+                <!-- The Great Cooling -->
+                <div class="p-6 bg-white rounded-lg shadow-xl border-l-8 border-cheddar-gold">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-1">The Great Cooling (November 11th)</h4>
+                    <p class="text-lg text-gray-700"><strong class="font-bold">Observance:</strong> A solemn time to think about change and mortality. We eat lukewarm Mac and Cheese to symbolize the body cooling down, focusing on strengthening our spiritual structure for the transition.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. The Moral Code and Ethics -->
+        <section id="tenets" class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                V. Moral Code, Transgressions, and Mercy
+            </h3>
+
+            <!-- Responsive Grid for Tenets and Transgression -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tenet 1 -->
+                <div class="p-6 bg-comfort-yellow rounded-lg shadow-xl border-l-8 border-cheddar-gold doctrinal-card">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-1">Tenet 1: Sacramental Consumption</h4>
+                    <p class="text-sm text-gray-700">We must eat the divine essence, Mac and Cheese, at least once a month. This is our physical connection to The Holy Cheddar and a reminder of the need for comfort.</p>
+                </div>
+                <!-- Tenet 2 -->
+                <div class="p-6 bg-comfort-yellow rounded-lg shadow-xl border-l-8 border-cheddar-gold doctrinal-card">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-1">Tenet 2: Perpetual Devotion</h4>
+                    <p class="text-sm text-gray-700">A simple prayer is required every morning and every night. It’s just a moment to thank The Holy Cheddar for the day's nourishment and the gift of life. Don't skip it!</p>
+                </div>
+                <!-- Tenet 3 -->
+                <div class="p-6 bg-comfort-yellow rounded-lg shadow-xl border-l-8 border-cheddar-gold doctrinal-card">
+                    <h4 class="text-2xl font-extrabold text-sauce-dark mb-1">Tenet 3: Canonical Virtue</h4>
+                    <p class="text-sm text-gray-700">This is about being a good person. Be kind, be respectful, and live with integrity. Avoid the chaotic extremes of being too strict or too reckless.</p>
+                </div>
+            </div>
+
+            <!-- Ultimate Sin & Mercy -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                 <!-- Ultimate Sin -->
+                <div class="p-6 bg-red-100 border-2 border-red-500 rounded-lg shadow-md">
+                    <h4 class="text-2xl font-bold text-red-700 mb-2">The Ultimate Transgression</h4>
+                    <p class="text-lg text-red-600">The worst thing you can do is fail to offer the required daily prayers (Tenet 2). It's not the content of the prayer, but the *act* of rejecting gratitude for life's comfort that sends you to the Hot Boiling Place.</p>
+                </div>
+                <!-- The Doctrine of the Leftover Noodle -->
+                <div class="p-6 bg-divine-blue/10 border-2 border-divine-blue rounded-lg shadow-md">
+                    <h4 class="text-2xl font-bold text-divine-blue mb-2">The Doctrine of the Leftover Noodle (Mercy)</h4>
+                    <p class="text-lg text-gray-700">We believe in second chances! Even if you feel like a forgotten Noodle at the bottom of the Bowl—cooled and alone—The Holy Cheddar can retrieve you. Through repentance and renewal (reheating), you can always be mixed back into the Divine Sauce.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Canonical Utensils and Rites -->
+        <section id="rites" class="mb-16">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                VI. Ecclesiastical Rites and Sacred Objects
+            </h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Utensils (Sacred Objects) -->
+                <div class="p-6 bg-comfort-yellow rounded-lg shadow-xl border-t-4 border-sauce-dark lg:col-span-1">
+                    <h4 class="text-2xl font-bold text-sauce-dark mb-4">The Canonical Utensils</h4>
+                    <ul class="list-disc list-outside space-y-2 text-lg text-gray-700 pl-8 mt-4">
+                        <li><strong class="font-bold">The Sacred Vessel:</strong> Any bowl or plate you use to hold the Mac and Cheese. It becomes holy because it contains the Divine Essence.</li>
+                        <li><strong class="font-bold">The Sacrament of the Fork:</strong> The only approved tool for eating. It symbolizes diligence and focus. (No spoons, they encourage scooping rather than thoughtful consumption.)</li>
+                        <li><strong class="font-bold">The Holy Strainer:</strong> Represents the cleansing of life's impurities. Use it often, both literally and metaphorically, to get rid of distractions.</li>
+                    </ul>
+                </div>
+
+                <!-- Enrollment Guidance -->
+                <div id="enrollment" class="p-8 bg-cheddar-gold/20 rounded-lg shadow-xl border-t-4 border-cheddar-gold lg:col-span-2">
+                    <h4 class="text-3xl font-bold text-sauce-dark mb-4">Official Enrollment in the House of Cheddar Comfort</h4>
+                    <p class="text-lg text-gray-700 mb-4">You become a formal member after completing the Rites of Initiation: eating the Sacred Meal (Mac and Cheese) and saying The Prayer of Formal Entry. Confirm your commitment below!</p>
+                    
+                    <button id="commit-button" onclick="showModal()" class="w-full md:w-auto px-8 py-3 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition duration-300 transform hover:-translate-y-0.5">
+                        Commence Initiation Rites
+                    </button>
+                    <p id="enrollment-status" class="mt-4 text-center font-semibold text-sauce-dark"></p>
+                </div>
+            </div>
+
+            <!-- Prayer Block -->
+            <div class="p-8 bg-white rounded-lg shadow-xl border-t-4 border-sauce-dark mt-8">
+                <h4 class="text-2xl font-bold text-sauce-dark mb-4">The Sacred Prayers of Perpetual Devotion</h4>
+                <p class="text-gray-600 italic mb-4 print-instruction">
+                    These are your daily required words. Don't worry, they're simple and warm.
+                </p>
+                
+                <div id="prayer-container" class="prose max-w-none text-gray-800 p-4 border border-cheddar-gold/50 rounded-lg bg-comfort-yellow space-y-8">
+                    
+                    <!-- 8.1 Prayer 1: Formal Entry - Content used in modal step 3 -->
+                    <div id="prayer-formal" class="prayer-content bg-comfort-yellow">
+                        <h2 class="text-2xl md:text-3xl font-serif font-bold text-sauce-dark text-center mb-6">The Prayer of Formal Entry</h2>
+                        <p class="text-sm italic text-center mb-4">Say this once, right after your first Sacramental Meal.</p>
+                        <p class="mb-4">O Holy Cheddar, source of all structure and comforting warmth, we stand before your Divine Presence, manifesting in the Sacred Vessel of Mac and Cheese. We acknowledge your infinite wisdom in crafting the perfect balance, the harmony between the firm integrity of the Noodle and the flowing, joyful grace of the Sauce. As we consume this Sacramental Essence, we accept the Nourishment of your truth and the warmth of your compassion into our very being.</p>
+
+                        <p class="mb-4">We confess our daily human search for perfect form, often leading to imbalance and discord. Guide our lives by your golden glow, O Holy Cheddar. Help us embody the Three Sacred Tenets. We dedicate this life to achieving the existential balance required for passage into the Eternal Bowl. Amen.</p>
+                    </div>
+                    <div class="flex justify-center -mt-4 mb-4">
+                        <button onclick="printSinglePrayer('prayer-formal')" class="print-single-btn px-6 py-2 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition transform hover:-translate-y-0.5 text-sm">Print This Prayer</button>
+                    </div>
+
+                    <!-- 8.2 Prayer 2: Morning Prayer -->
+                    <div id="prayer-morning" class="prayer-content border-t pt-8 border-cheddar-gold/50 bg-comfort-yellow">
+                        <h2 class="text-2xl md:text-3xl font-serif font-bold text-sauce-dark text-center mb-6">The Morning Prayer of Gratitude</h2>
+                        <p class="text-sm italic text-center mb-4">Say this daily upon waking (Tenet 2).</p>
+                        <p class="mb-4">Holy Cheddar, we greet the new day under your comforting light. Thank you for the gift of rest and the renewed strength to seek the perfect balance today. Let your golden hue illuminate our choices, ensuring we treat all beings with kindness. Guard us against being too rigid or too reckless. Give us the focus and satisfaction we need for the day. Amen.</p>
+                    </div>
+                    <div class="flex justify-center -mt-4 mb-4">
+                        <button onclick="printSinglePrayer('prayer-morning')" class="print-single-btn px-6 py-2 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition transform hover:-translate-y-0.5 text-sm">Print This Prayer</button>
+                    </div>
+                    
+                    <!-- 8.3 Prayer 3: Night Prayer -->
+                    <div id="prayer-night" class="prayer-content border-t pt-8 border-cheddar-gold/50 bg-comfort-yellow">
+                        <h2 class="text-2xl md:text-3xl font-serif font-bold text-sauce-dark text-center mb-6">The Night Prayer of Comfort</h2>
+                        <p class="text-sm italic text-center mb-4">Say this daily before sleep (Tenet 2).</p>
+                        <p class="mb-4">O Holy Cheddar, as the day settles, we offer thanks for the nourishment received. We think about the hours past—where we did well, and where we could've been better. Forgive us if our structure was weak or our compassion was lacking. We seek the fluid, restful comfort of the night, knowing you are the source of all peace. Grant us deep sleep so we can wake ready to honor you. Thank you for the Divine Gift. Amen.</p>
+                    </div>
+                    <div class="flex justify-center -mt-4">
+                        <button onclick="printSinglePrayer('prayer-night')" class="print-single-btn px-6 py-2 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition transform hover:-translate-y-0.5 text-sm">Print This Prayer</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 9. Eschatology (The Afterlife) -->
+        <section id="eschatology" class="mb-20">
+            <h3 class="text-3xl md:text-4xl font-bold section-heading pb-4 mb-8">
+                VII. Eschatology: The Final Destiny
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- The Eternal Bowl -->
+                <div class="p-8 bg-green-100 border-4 border-green-700 rounded-lg shadow-2xl doctrinal-card">
+                    <h4 class="text-3xl font-extrabold text-green-800 mb-2">The Eternal Bowl (Divine Reward)</h4>
+                    <p class="text-lg text-gray-800">This is true heaven—a place of perpetual comfort for souls who achieved balance. The reward is the <strong class="font-bold">Endless Flow</strong> of Mac and Cheese, and your soul merges into the communal warmth of the Divine Sauce.</p>
+                    <h5 class="font-bold mt-4 text-green-800">The Geography of the Bowl:</h5>
+                    <ul class="text-sm list-disc pl-5 mt-2">
+                        <li><strong class="font-bold">The Warm Rim:</strong> A zone of perpetual moderate temperature and gentle light.</li>
+                        <li><strong class="font-bold">The Deep Core:</strong> The ultimate source of the Divine Sauce, where the most devout souls reside in constant, pure Nourishment.</li>
+                        <li><strong class="font-bold">The Noodle Fields:</strong> Structured plains of perfectly formed, non-clumping pasta shapes that souls travel through.</li>
+                    </ul>
+                </div>
+                <!-- The Hot Boiling Place -->
+                <div class="p-8 bg-red-100 border-4 border-red-700 rounded-lg shadow-2xl doctrinal-card">
+                    <h4 class="text-3xl font-extrabold text-red-800 mb-2">The Hot Boiling Place (The Ultimate Separation)</h4>
+                    <p class="text-lg text-gray-800">This is the opposite of comfort. Souls who committed the Ultimate Transgression are sent here. It’s a place of <strong class="font-bold">constant, chaotic, aggressive heat</strong>, where there is no structure (Noodles break down) and no compassion (the Sauce curdles). The soul exists in perpetual discomfort.</p>
+                    <h5 class="font-bold mt-4 text-red-800">The Torments of the Place:</h5>
+                    <ul class="text-sm list-disc pl-5 mt-2">
+                        <li><strong class="font-bold">The Sinking Slurry:</strong> Being lost in the watery, flavorless dregs at the bottom.</li>
+                        <li><strong class="font-bold">The Broken Structure:</strong> Being a perpetually disintegrating Noodle, losing all sense of self and integrity.</li>
+                        <li><strong class="font-bold">The Curdled Core:</strong> The inability to feel or share warmth, trapped in bitterness.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- The Modal (Hidden by Default) -->
+    <div id="enrollment-modal-overlay" class="modal-overlay">
+        <div id="enrollment-modal-content" class="modal-content">
+            <h3 id="modal-title" class="text-3xl font-bold text-sauce-dark mb-4 text-center">Rites of Initiation</h3>
+
+            <!-- Step 1: Initial Swear -->
+            <div id="step-1" class="step-container space-y-6">
+                <h4 class="text-xl font-semibold text-sauce-dark mb-2">Step 1: The Swear</h4>
+                <p class="text-lg text-gray-700">Do you solemnly swear to accept the Divine Nourishment and adhere to the Three Sacred Tenets of the Holy Cheddar Faith?</p>
+                <div class="flex justify-center space-x-4 pt-4">
+                    <button onclick="nextStep(2)" class="px-6 py-3 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition duration-300">
+                        I Swear and Commit
+                    </button>
+                    <button onclick="closeModal()" class="px-6 py-3 bg-gray-300 text-gray-800 font-bold rounded-lg shadow-md hover:bg-gray-400 transition duration-300">
+                        Pause Reflection
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Sacramental Meal Confirmation -->
+            <div id="step-2" class="step-container space-y-6">
+                 <h4 class="text-xl font-semibold text-sauce-dark mb-2">Step 2: The Sacramental Meal</h4>
+                <p class="text-lg text-gray-700">Have you recently consumed a bowl of Mac and Cheese to physically connect with The Holy Cheddar's essence (Tenet 1)?</p>
+                <div class="flex justify-center space-x-4 pt-4">
+                    <button onclick="nextStep(3)" class="px-6 py-3 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition duration-300">
+                        Yes, I have been Nourished
+                    </button>
+                    <button onclick="nextStep(1, true)" class="px-6 py-3 bg-gray-300 text-gray-800 font-bold rounded-lg shadow-md hover:bg-gray-400 transition duration-300">
+                        Not Yet, Go Back
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Reciting the Formal Prayer -->
+            <div id="step-3" class="step-container space-y-6">
+                <h4 class="text-xl font-semibold text-sauce-dark mb-2">Step 3: The Formal Prayer</h4>
+                <p class="text-lg text-gray-700 italic border-l-4 border-cheddar-gold pl-4 pb-2">Please read and recite this prayer aloud to acknowledge your entry into the faith:</p>
+                
+                <div class="p-4 bg-comfort-yellow rounded-lg border border-sauce-dark/20 text-sm max-h-96 overflow-y-auto">
+                    <p class="font-bold text-center mb-3 text-sauce-dark">The Prayer of Formal Entry</p>
+                    <p class="mb-4">O Holy Cheddar, source of all structure and comforting warmth, we stand before your Divine Presence, manifesting in the Sacred Vessel of Mac and Cheese. We acknowledge your infinite wisdom in crafting the perfect balance, the harmony between the firm integrity of the Noodle and the flowing, joyful grace of the Sauce. As we consume this Sacramental Essence, we accept the Nourishment of your truth and the warmth of your compassion into our very being.</p>
+                    <p>We confess our daily human search for perfect form, often leading to imbalance and discord. Guide our lives by your golden glow, O Holy Cheddar. Help us embody the Three Sacred Tenets. We dedicate this life to achieving the existential balance required for passage into the Eternal Bowl. Amen.</p>
+                </div>
+
+                <div class="flex justify-center space-x-4 pt-4">
+                    <button onclick="nextStep(4)" class="px-6 py-3 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition duration-300">
+                        Prayer Complete: Proceed
+                    </button>
+                    <button onclick="nextStep(2, true)" class="px-6 py-3 bg-gray-300 text-gray-800 font-bold rounded-lg shadow-md hover:bg-gray-400 transition duration-300">
+                        Go Back
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Canonical Register (Google Form Embed) -->
+            <div id="step-4" class="step-container space-y-6">
+                <h4 class="text-xl font-semibold text-sauce-dark mb-2">Step 4: The Canonical Register</h4>
+                <p class="text-lg text-gray-700">To finalize your connection, please fill out the Divine Ledger (Google Form) below:</p>
+                
+                <!-- Google Form Iframe -->
+                <div class="iframe-container">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSeXI64Bo6AuFBK1XUTpzPL1644m2d2Ti5xNjnzNTeIqgX_o5w/viewform?embedded=true" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        title="Canonical Registry Form">Loading…</iframe>
+                </div>
+
+                <div class="flex justify-center space-x-4 pt-4">
+                    <button onclick="nextStep(5)" class="px-6 py-3 bg-cheddar-gold text-white font-bold rounded-lg shadow-md hover:bg-sauce-dark transition duration-300">
+                        Finish & Officially Join
+                    </button>
+                    <button onclick="nextStep(3, true)" class="px-6 py-3 bg-gray-300 text-gray-800 font-bold rounded-lg shadow-md hover:bg-gray-400 transition duration-300">
+                        Go Back
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Step 5: Final Enrollment Trigger -->
+            <div id="step-5" class="step-container space-y-6">
+                 <h4 class="text-xl font-semibold text-sauce-dark mb-2">Step 5: Finalization of Adherence</h4>
+                <p class="text-lg text-gray-700">You have completed all Rites! Click 'Finalize Status' below to officially record your Adherent status in your browser, connecting you to the House of Cheddar Comfort.</p>
+                <div class="flex justify-center pt-4">
+                    <!-- Final button now calls the enrollment function -->
+                    <button onclick="enrollAdherent()" class="px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-lg shadow-md hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                        Finalize Adherent Status
+                    </button>
+                </div>
+            </div>
+
+
+             <!-- Step 6: Complete -->
+            <div id="step-6" class="step-container space-y-4 text-center">
+                <div class="text-5xl mb-4">🧀</div>
+                <h4 class="text-2xl font-bold text-green-700">Enrollment Complete!</h4>
+                <p id="enrollment-complete-message" class="text-lg text-gray-700">
+                    You are now an Adherent. The next annual prayer date is set.
+                </p>
+                <p class="text-sm text-gray-500 mt-2">
+                    Your status is saved locally in this browser.
+                </p>
+                <div class="pt-4">
+                    <button onclick="closeModal()" class="px-6 py-2 bg-sauce-dark text-white font-bold rounded-lg shadow-md hover:bg-cheddar-gold transition duration-300">
+                        Close and Reflect
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- JavaScript for Local Storage Persistence and Modal Logic -->
+    <script>
+        // --- LOCAL STORAGE KEY ---
+        const ENROLLMENT_STATUS_KEY = 'cheddarComfortEnrollment';
+
+        // --- MODAL LOGIC ---
+        let currentStep = 1;
+        const modalOverlay = document.getElementById('enrollment-modal-overlay');
+        const modalTitle = document.getElementById('modal-title');
+        
+        // Show the modal
+        const showModal = () => {
+            // Check enrollment status on show
+            const data = checkEnrollmentStatus();
+            if (data && data.isEnrolled) {
+                // If already enrolled, start at completion step
+                currentStep = 6;
+            } else {
+                currentStep = 1;
+            }
+            modalOverlay.style.display = 'flex';
+            updateModalView();
+        };
+
+        // Close the modal
+        const closeModal = () => {
+            modalOverlay.style.display = 'none';
+        };
+
+        // Advance or backtrack modal steps
+        const nextStep = (stepNumber, isBack = false) => {
+            currentStep = stepNumber;
+            updateModalView();
+        };
+
+        // Update the visibility and content of the modal steps
+        const updateModalView = () => {
+            // The flow now supports steps 1 through 6
+            const steps = [1, 2, 3, 4, 5, 6]; 
+            steps.forEach(step => {
+                const stepElement = document.getElementById(`step-${step}`);
+                if (stepElement) {
+                    stepElement.style.display = step === currentStep ? 'block' : 'none';
+                }
+            });
+
+            // Update title based on step
+            if (currentStep === 1) modalTitle.textContent = "Rites of Initiation: The Swear";
+            else if (currentStep === 2) modalTitle.textContent = "Rites of Initiation: The Sacramental Meal";
+            else if (currentStep === 3) modalTitle.textContent = "Rites of Initiation: The Formal Prayer";
+            else if (currentStep === 4) modalTitle.textContent = "Rites of Initiation: The Canonical Register";
+            else if (currentStep === 5) modalTitle.textContent = "Rites of Initiation: Finalization";
+            else if (currentStep === 6) modalTitle.textContent = "Enrollment Complete!";
+        };
+
+        // --- LOCAL STORAGE FUNCTIONS (REPLACING FIREBASE) ---
+
+        /**
+         * Checks the local storage for the user's enrollment status.
+         * @returns {object} The enrollment data or null.
+         */
+        const checkEnrollmentStatus = () => {
+            const data = localStorage.getItem(ENROLLMENT_STATUS_KEY);
+            return data ? JSON.parse(data) : null;
+        };
+
+        /**
+         * Saves the enrollment status to local storage and completes the process.
+         */
+        const enrollAdherent = () => {
+            const statusElement = document.getElementById('enrollment-status');
+            
+            try {
+                // 1. Calculate the next annual prayer date (1 year from now)
+                const nextYear = new Date();
+                nextYear.setFullYear(nextYear.getFullYear() + 1);
+                
+                // 2. Create the data object
+                const enrollmentData = {
+                    isEnrolled: true,
+                    enrollmentDate: new Date().toISOString(),
+                    nextAnnualPrayerDate: nextYear.toISOString()
+                };
+
+                // 3. Save to Local Storage
+                localStorage.setItem(ENROLLMENT_STATUS_KEY, JSON.stringify(enrollmentData));
+                
+                // 4. Update the UI
+                updateDisplayStatus(enrollmentData);
+                
+                // 5. Update modal and show success
+                const completionMessage = document.getElementById('enrollment-complete-message');
+                completionMessage.textContent = `You are now an Adherent. Your next Annual Prayer is due on ${formatDate(nextYear)}.`;
+                statusElement.textContent = "Status saved locally. Welcome, Adherent!";
+                statusElement.classList.remove('text-red-600', 'text-sauce-dark');
+                statusElement.classList.add('text-green-700');
+                
+                nextStep(6); // Move to completion step (Step 6)
+
+            } catch (error) {
+                statusElement.classList.remove('text-green-700');
+                statusElement.classList.add('text-red-600');
+                statusElement.textContent = "Enrollment Failed. See console for error details.";
+                console.error("Error saving enrollment status to localStorage:", error);
+            }
+        };
+
+        /**
+         * Formats an ISO string date into a readable format.
+         * @param {string} isoDateString - The date string from the enrollment data.
+         * @returns {string} The formatted date.
+         */
+        const formatDate = (isoDateString) => {
+            if (!isoDateString) return 'Unknown Date';
+            const date = new Date(isoDateString);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        };
+
+        /**
+         * Updates the display bar and enrollment button based on status.
+         * @param {object} data - The enrollment data.
+         */
+        const updateDisplayStatus = (data) => {
+            const annualPrayerDisplay = document.getElementById('annual-prayer-display');
+            const commitButton = document.getElementById('commit-button');
+            const enrollmentStatus = document.getElementById('enrollment-status');
+
+            if (data && data.isEnrolled) {
+                const nextPrayerDate = formatDate(data.nextAnnualPrayerDate);
+                
+                annualPrayerDisplay.textContent = `Adherent Status: Next Annual Prayer: ${nextPrayerDate}`;
+                annualPrayerDisplay.classList.remove('hidden');
+
+                enrollmentStatus.textContent = `Confirmed Adherent. Next Annual Prayer: ${nextPrayerDate}`;
+                enrollmentStatus.classList.remove('text-sauce-dark', 'text-red-600');
+                enrollmentStatus.classList.add('text-green-700');
+                
+                commitButton.textContent = "Status Confirmed (Click to View Rites)";
+                commitButton.classList.remove('bg-cheddar-gold', 'hover:bg-sauce-dark');
+                commitButton.classList.add('bg-green-700', 'hover:bg-green-800');
+            } else {
+                annualPrayerDisplay.textContent = 'Unconfirmed Novitiate';
+                annualPrayerDisplay.classList.remove('hidden');
+
+                enrollmentStatus.textContent = 'Novitiate: Rites Not Completed.';
+                enrollmentStatus.classList.remove('text-green-700');
+                enrollmentStatus.classList.add('text-sauce-dark');
+                
+                commitButton.textContent = "Commence Initiation Rites";
+                commitButton.classList.remove('bg-green-700', 'hover:bg-green-800');
+                commitButton.classList.add('bg-cheddar-gold', 'hover:bg-sauce-dark');
+            }
+        };
+
+
+        // --- INITIALIZATION ---
+        const initializeApp = () => {
+            console.log("App Initializing: Checking local status...");
+            
+            // Check for existing data in local storage
+            const enrollmentData = checkEnrollmentStatus();
+            updateDisplayStatus(enrollmentData);
+        };
+        
+        // Function to handle printing a single element (prayer/section)
+        const printSinglePrayer = (elementId) => {
+            const elementToPrint = document.getElementById(elementId);
+            
+            if (!elementToPrint) {
+                console.error('Element to print not found.');
+                return;
+            }
+
+            // 1. Add the 'print-target' class to the element to be printed
+            elementToPrint.classList.add('print-target');
+            
+            // 2. Call the native print function
+            window.print();
+
+            // 3. Clean up the classes after printing (using a slight delay)
+            setTimeout(() => {
+                elementToPrint.classList.remove('print-target');
+            }, 500); // 500ms delay to ensure print dialog initiates before cleanup
+        };
+
+
+        window.onload = initializeApp;
+        window.enrollAdherent = enrollAdherent; // Expose the function globally
+        window.showModal = showModal; // Expose the function globally
+        window.nextStep = nextStep; // Expose the function globally
+        window.closeModal = closeModal; // Expose the function globally
+        window.printSinglePrayer = printSinglePrayer; // Expose the function globally
+    </script>
+</body>
+</html>
